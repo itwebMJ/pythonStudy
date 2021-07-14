@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var ids = ['aaa', 'bbb', 'ccc', 'ddd'];
+
+        function f1(){
+            var res = '사용가능한 id';
+            var id_tag = document.getElementById("id");
+            var id = id_tag.value;
+            for(i=0;i<ids.length;i++){
+                if(id==ids[i]){
+                    res = '중복된 id';
+                    break;
+                }
+            }
+            var span_tag = document.getElementById("sp1");
+            span_tag.innerHTML = res;
+        }
+
+        function check(){
+        /*
+            var id = document.getElementById("id").value;
+            var pwd = document.getElementById("pwd").value;
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            alert(id+' / '+pwd+' / '+name+' / '+email);
+        */
+            var id = document.forms["f"]["id"].value;
+            var pwd = document.forms["f"]["pwd"].value;
+            var name = document.forms["f"]["name"].value;
+            var email = document.forms["f"]["email"].value;
+            alert(id+' / '+pwd+' / '+name+' / '+email);
+
+            var gender = document.forms['f']['gender'].value;
+            alert('gender:'+gender);
+
+            var hobby = document.forms['f']['hobby'];
+            for(i=0;i<hobby.length;i++){
+                if(hobby[i].checked==true){
+                    alert(hobby[i].value);
+                }
+            }
+            var grade = document.forms["f"]["grade"].value;
+            alert(grade);
+
+            var hello = document.forms["f"]["hello"].value;
+            alert(hello);
+        }
+    </script>
+</head>
+<body>
+<h3>회원가입</h3>
+<form action="" method="post" name="f">
+    <table border="1">
+        <tr><th>id</th>
+            <td>
+                <input type="text" name="id" id="id">
+                <input type="button" value="id중복체크" onclick="f1()">
+                <span id="sp1"></span>
+            </td></tr>
+        <tr><th>pwd</th><td><input type="password" name="pwd" id="pwd"></td></tr>
+        <tr><th>name</th><td><input type="text" name="name" id="name"></td></tr>
+        <tr><th>email</th><td><input type="text" name="email" id="email"></td></tr>
+        <tr><th>성별</th>
+            <td><input type="radio" name="gender" value="f" checked>여
+                <input type="radio" name="gender" value="m">남</td></tr>
+        <tr><th>취미</th>
+            <td><input type="checkbox" name="hobby"  value="h1">낚시
+                <input type="checkbox" name="hobby"  value="h2" checked>악기
+                <input type="checkbox" name="hobby"  value="h3" checked>운동
+                <input type="checkbox" name="hobby"  value="h4">게임
+            </td>
+        </tr>
+        <tr><th>학년</th><td>
+            <select name="grade">
+                <option value="1">1학년</option>
+                <option value="2">2학년</option>
+                <option value="3">3학년</option>
+                <option value="4">4학년</option>
+            </select>
+        </td></tr>
+        <tr><th>가입인사</th><td><textarea name="hello" rows="10" cols="45">안녕하세요</textarea></td></tr>
+        <tr><td colspan="2"><input type="button" value="가입" onclick="check()">
+            <input type="reset" value="취소"></td> </tr>
+    </table>
+</form>
+</body>
+</html>

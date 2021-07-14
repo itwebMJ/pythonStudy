@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var x=3
+  if(x==3){
+    document.write('x는 3<br>');
+  }else{
+    document.write('x는 3이 아니다<br>');
+  }
+  if(x==1){
+    document.write('x는 1<br>');
+  }else if(x==2){
+    document.write('x는 2<br>');
+  }else if(x==3){
+    document.write('x는 3<br>');
+  }else{
+    document.write('x는 3초과<br>');
+  }
+  switch(x){
+      case 1:
+          document.write('x는 1<br>');
+          break;
+      case 2:
+          document.write('x는 2<br>');
+          break;
+      case 3:
+          document.write('x는 3<br>');
+          break;
+      default:
+          document.write('x는 3초과<br>');
+          break;
+  }
+  //====================================
+  for(i=0;i<10;i++){    //i+=1
+    document.write(i+'<br>');
+  }
+  i=0
+  while(i<5){
+      document.write(i+'<br>');
+      i++;
+  }
+  //====================================
+  function add(a, b){
+      return a+b
+  }
+  var res = add(1, 2)
+  document.write('res: '+res+'<br>');
+
+  res = add('aaa', 'bbb')
+  document.write('res: '+res+'<br>');
+
+  document.write('aaa'+12+'<br>');
+  document.write(12+'aaa'+'<br>');
+
+  function check(){
+      var val = f.id.value;
+      len = val.length
+      //alert(len);
+      if(len==0){
+          alert('id는 필수사항입니다')
+          f.id.focus()
+      }
+  }
+</script>
+
+<form name="f">
+  <input type="text" name="id">
+  <input type="button" value="가입" onclick="check()">
+
+</form>
+</body>
+</html>

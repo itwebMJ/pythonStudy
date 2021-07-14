@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      function a1(){
+        var b = document.getElementById("btn1"); //id값이 'btn1'인 요소를 검색하여 반환
+        alert(b.value);
+        var c = document.getElementById("t1");
+        alert(c.value);
+
+        var arr = document.getElementsByTagName("input");
+        alert(arr.length);
+        for(i=0;i<arr.length;i++){
+          alert(arr[i].type);
+        }
+      }
+
+      function a2(){
+        var p2 = document.getElementById("p2");
+        var txt = p2.innerHTML;//태그 텍스트 읽기
+        alert(txt);
+        var t1 = document.getElementById("t1");
+        p2.innerHTML = t1.value;//태그 텍스트 변경
+      }
+
+      function a3(){
+        var ps = document.getElementsByTagName('p');
+        for(i=0;i<ps.length;i++){
+          alert(ps[i].innerHTML);
+        }
+      }
+    </script>
+</head>
+<body>
+<input type="text" name="t1" id="t1"><br>
+<input type="button" value="btn1" id="btn1" onclick="a1()"><br>
+<p>aaa</p>
+<p id="p2">bbb</p>
+<p>ccc</p>
+<p>ddd</p>
+<input type="button" value="btn2" id="btn2" onclick="a2()"><br>
+<input type="button" value="btn3" id="btn3" onclick="a3()"><br>
+</body>
+</html>

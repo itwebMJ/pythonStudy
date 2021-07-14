@@ -1,0 +1,19 @@
+<style>
+    h3{
+      color:blue
+    }
+    .a{
+      background-color:orange
+    }
+    .b{
+      background-color:yellow
+    }
+    #btn1{
+      width:100px;
+      height:100px;
+      background-color:#6083F3
+    }
+    h2.b{
+      color:red
+    }
+  </style>
