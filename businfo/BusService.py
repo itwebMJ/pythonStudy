@@ -25,6 +25,8 @@ class BusService:
             corpNm = root.find('corpNm').get_text()
 
             return vo.BusVo(busRouteId, busRouteNm, stStationNm, edStationNm, term, firstBusTm, lastBusTm, corpNm)
+        else:
+            return msg
 
     def getRoutePathList(self, busRouteId):
         url = self.url % ('getRoutePath', self.apiKey, 'busRouteId', busRouteId)
@@ -44,6 +46,8 @@ class BusService:
                 gps_y = item.find('gpsY').get_text()
                 vo_list.append(vo.PointVo(no, gps_x, gps_y))
             return vo_list
+        else:
+            return msg
 
     def getBusRouteList(self, strSrch):
         url = self.url % ('getBusRouteList', self.apiKey, 'strSrch', strSrch)
@@ -67,7 +71,8 @@ class BusService:
                 corpNm = item.find('corpNm').get_text()
                 vo_list.append(vo.BusVo(busRouteId, busRouteNm, stStationNm, edStationNm, term, firstBusTm, lastBusTm, corpNm))
             return vo_list
-
+        else:
+            return msg
 
     def getStaionsByRouteList(self, busRouteId):
         url = self.url % ('getStaionByRoute', self.apiKey, 'busRouteId', busRouteId)
@@ -85,6 +90,9 @@ class BusService:
                 arsId = item.find('arsId').get_text()
                 vo_list.append(vo.StationVo(seq, stationNm, arsId))
             return vo_list
+        else:
+            return msg
+
 #getRouteInfoItem(노선ID): 리턴값은 BUS_VO 객체 한개 반환
 # getRoutePathList(노선ID): 경로 묶음. POINT_VO객체들을 리스트에 담아서 반환
 # getBusRouteList(버스명): 찾아진 버스정보를 BUS_VO 객체로 만들어서 리스트에 담아서 반환
