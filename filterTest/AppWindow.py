@@ -59,6 +59,33 @@ class AppWin(tk.Frame):#AppWin은 Frame(위젯을 배치하는 판)
         filter_dst = cv2.filter2D(self.pic_src, -1, kernel)
         self.read_img(filter_dst)
 
+    def btn5_handler(self):
+        filter_dst = cv2.GaussianBlur(self.pic_src, (5,5), 5)
+        self.read_img(filter_dst)
+
+    def btn6_handler(self):
+        blur = cv2.GaussianBlur(self.pic_src, (5,5), 5)
+        filter_dst = np.clip(2.0*self.pic_src - blur, 0, 255).astype('uint8')
+        self.read_img(filter_dst)
+
+    def btn7_handler(self):
+        x = self.pic_src.copy().astype('int8')
+        cv2.randn(x, 0, 0.2)
+        x = x.astype('uint8')
+        filter_dst = cv2.add(self.pic_src, x)
+        self.read_img(filter_dst)
+
+    def btn8_handler(self):
+        filter_dst = cv2.medianBlur(self.pic_src, 5)
+        self.read_img(filter_dst)
+
+    def btn9_handler(self):
+        fname = self.fileName_ent.get()  # 엔트리에 입력한 파일명
+        if fname == '' or fname == None:
+            tk.messagebox.showinfo(title='오류', message='파일명 누락')
+            return
+        self.pic_src = cv2.imread('pic/'+fname+'.jpg')
+        self.read_img(self.pic_src)
 
     def create_widgets(self):  # 원하는 구성요소 부착
         self.img_label = tk.Label(self, image=self.img_src)
@@ -98,5 +125,8 @@ class AppWin(tk.Frame):#AppWin은 Frame(위젯을 배치하는 판)
         self.btn2['command'] = self.btn2_handler
         self.btn3['command'] = self.btn3_handler
         self.btn4['command'] = self.btn4_handler
-
-
+        self.btn5['command'] = self.btn5_handler
+        self.btn6['command'] = self.btn6_handler
+        self.btn7['command'] = self.btn7_handler
+        self.btn8['command'] = self.btn8_handler
+        self.btn9['command'] = self.btn9_handler
